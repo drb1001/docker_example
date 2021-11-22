@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <div>
+    <p>Hello.</p>
+  </div>
+  <input id=input name="input" type="number" value="3">
+  <button onclick="getData()">Click me</button>
+  <div>
+    <p id=data></p>
+  </div>
+
+  <script>
+  function getData() {
+    var n_input = document.querySelector('#input').value;
+    console.log("getting data. input = " + n_input);
+    var url = "http://localhost:8001?n=" + n_input;
+    fetch(url).then(res => {
+    return res.text()
+  }).then(data => {
+    console.log(data);
+    document.querySelector('#data').textContent = data;
+
+  })
+  }
+  </script>
+
+
+</body>
+</html>
